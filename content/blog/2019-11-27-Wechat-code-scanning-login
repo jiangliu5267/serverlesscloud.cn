@@ -1,0 +1,114 @@
+---
+title: "Serverless Framework 发布微信扫码一键登录能力，业务上云只需3min"
+description: "Serverless Framework 发布微信扫码一键登录能力,用户可直接通过微信扫描命令行中的二维码，点击【去微信授权】，授权登录和注册。"
+date: 2019-11-27
+thumbnail: 'https://uploader.shimo.im/f/qs2QZVORVP4o5dOt.jpg!thumbnail'
+category:
+  - 功能发布
+authors:
+  - 江柳
+---
+
+# Serverless Framework 是什么？
+Serverless Framework 是业界非常受欢迎的无服务器应用框架，开发者无需关心底层资源即可部署完整可用的 serverless 应用架构。Serverless Framework 具有资源编排、自动伸缩、事件驱动等能力，覆盖编码-调试-测试-部署等全生命周期，帮助开发者通过联动云资源，迅速在本地构建 serverless 应用。
+![image](https://uploader.shimo.im/f/NMWAaqF48H8b5bQg.png!thumbnail)
+
+# 为什么做微信扫码一键登录功能
+Serverless Frameowrk正常业务部署过程，需要进行【环境安装】-->【配置账户信息】-->【创建服务】-->【配置触发器】-->【部署服务】等操作，其中，在【配置账户信息】环节，用户需：
+- 登陆控制台，访问【账号中心】>【账号信息】，查询到自己的APPID
+- 并进入【访问管理控制台】，获取相关密钥或创建相关密钥
+- 然后在本地新建文件，写入账号信息 
+
+```
+[default]
+tencent_appid = appid
+tencent_secret_id = secretid
+tencent_secret_key = secretkey
+```
+
+- 最后，将该文件命名为 credentials，放入 ~ 目录。
+
+这种方式下，用户需要在本地开发环境和控制台来回切换，操作繁冗。为了简化账号配置环节，实现本地一键开发部署，腾讯云Serverless团队将Serverless Framework与微信进行打通，支持用户在Serverless Framework环境扫码注册登陆，并自动拉取用户信息，用户无需登录控制台，可全程在本地完成配置、创建、测试、部署等步骤。
+# 最佳实践：基于Serverless Framework快速部署全栈应用
+全栈组件（Vue.js+Express.js）用于通过多个 Serverless Components 部署 Serverless 全栈应用程序，可以帮助开发者更方便快捷的部署 Serverless 应用，例如利用后端 API 与前端 Vue.js 结合等场景。这里，将以全栈应用（Vue.js+Express.js）为例，展示如何在3min内基于Serverless Framework部署应用至腾讯云。
+
+**视频**
+
+该 Template 包括：
+- serverless Express.js 后端：由腾讯云 Servelress Cloud Function（云函数 SCF） 和腾讯云 API 网关提供相关能力，支持 express.js 框架，帮助开发者架构自己的项目和路由。
+- serverless Vue.js 前端：由腾讯云 Cloud Object Storage（对象存储 COS）提供相关存储能力，通过后端 API 传递到前端，并使用 Vue.js 做相关渲染。
+
+该全栈 Web 应用架构图如下：
+![image](https://uploader.shimo.im/f/lIC9ebpSfD8TdlYU.png!thumbnail)
+
+## 安装环境
+- 安装 Node.js（6.x或以上的版本），具体参考参考 [Node.js 安装指南](https://nodejs.org/zh-cn/download/)；
+- 安装 Serverless Framework CLI（1.57.0或以上的版本），在命令行中运行如下命令：
+
+
+```
+npm install -g serverless
+```
+
+- 新建一个本地文件夹，使用 create --template-url ，安装相关 template。也可以将文件直接下载到本地：
+
+```
+$ serverless create --template-url https://github.com/serverless/components/tree/master/templates/tencent-fullstack-application
+```
+
+使用 cd 命令，进入 templates\tencent-fullstack-application    文件夹，可以查看到如下目录结构：
+
+```
+|- api
+|- dashboard
+|- serverless.yml      # 使用项目中的 yml 文件
+```
+
+分别在 dashboard 和 api 两个文件目录执行 NPM 依赖的安装，如下命令所示：
+
+```
+$ cd dashboard
+$ npm i
+```
+
+```
+$ cd api
+$ npm i
+```
+
+## 部署
+回到 tencent-fullstack-application 目录下，直接通过 serverless  命令来部署应用：
+
+```
+$ serverless
+```
+
+注：如果希望查看部署详情，可以通过调试模式的命令 serverless --debug 进行部署。
+
+**==如账号未登陆或注册腾讯云，可在运行该命令后，直接通过微信扫描命令行中的二维码，点击【去微信授权】，授权登录和注册。==**
+
+![image](https://uploader.shimo.im/f/DKH9FGQVgZIv9noa.png!thumbnail)
+部署成功后，可以直接在浏览器中访问日志中返回的 dashboard url 地址，查看该全栈 Web App 的效果：
+ 
+```
+dashboard:
+    url: https://jcwm1l-myappid.cos-website.ap-guangzhou.myqcloud.com
+    env:
+      apiUrl: https://service-id-myappid.gz.apigw.tencentcs.com/release/
+  api:
+    region:              undefined
+    functionName:        tencent-fullstack-api
+    apiGatewayServiceId: service-id
+    url:                 https://service-id-myappid.gz.apigw.tencentcs.com/release/
+
+  15s » dashboard » done
+```
+
+# 写在最后
+
+此项目的完全基于腾讯云 Serverless 产品，可大大缩减使用成本。 如果大家正在寻找一个低开销、便捷轻量的 Serverless 服务管理框架，全栈组件（Vue.js+Express.js）将是很好的选择。
+
+之后，我们也将持续输出系列基于 Serverless Framework 的典型应用场景和最佳实践案例，感兴趣的读者可以点击进入 [Serverless Framework](https://cloud.tencent.com/product/sf)的介绍页， 部署更多好玩、实用的服务与应用。
+
+腾讯云 Serverless 团队也将持续为开发者提供 Serverless 产品的高阶功能和运维服务，并面向 Serverless 应用的典型场景，提供更加流畅易用的创建体验。
+
