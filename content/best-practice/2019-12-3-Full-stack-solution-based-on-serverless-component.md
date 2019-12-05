@@ -1,5 +1,5 @@
 ---
-title: 基于 Serverless Component 的全栈解决方案
+title: 基于 Serverless Component 全栈解决方案
 description: 本文将介绍如何借助 Serverless Component 快速开发全栈Web应用。
 date: 2019-12-05
 thumbnail: https://main.qcloudimg.com/raw/d7c66434ce0734583bf115b2d9d969be.png
