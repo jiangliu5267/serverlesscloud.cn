@@ -4,7 +4,7 @@ description: 为了简化账号配置环节，实现本地一键开发部署，S
 date: 2019-12-04
 thumbnail: https://main.qcloudimg.com/raw/7092b9d6acbd11220bd1fd433ef87f7d.png
 categories:
-  - best-practice
+  - news
 authors:
   - liujiang
 ---
@@ -97,4 +97,4 @@ functions:   hello_world: my-service-dev-hello_world
     ANY - https://service-c6pxs4ku-1256386184.gz.apigw.tencentcs.com/release/my-service-dev-hello_world
 ```
 
-欢迎大家访问 [Serverless](https://github.com/serverless/components) ，部署更多好玩、实用的服务与应用。
+欢迎大家访问 [Serverless Component](https://github.com/serverless/components) ，部署更多好玩、实用的服务与应用。
