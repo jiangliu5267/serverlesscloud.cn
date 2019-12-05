@@ -1,10 +1,23 @@
-﻿当一个应用需要对第三方提供服务接口时，REST API 无疑是目前最主流的选择。不过，如果自建 REST API，开发者需要购买虚拟机、配置环境等等，等一切都搞定，可能已经又是一个深夜。
+---
+title: 通过 SCF Component 轻松构建 REST API，再也不用熬夜加班了
+description: 本教程将分享如何通过Serverless SCF Component 、云函数 SCF 及 API 网关组件，快速构建一个 REST API 并实现 GET/PUT 操作。
+date: 2019-12-05
+thumbnail: https://main.qcloudimg.com/raw/bd045821dfa072b894864a12c1267469.png
+categories:
+  - best-practice
+authors:
+  - liujiang
+authorslink:
+  - https://github.com/jiangliu5267
+---
 
-而这些，都可以用 Serverless  Framework 来解决。本教程将分享如何通过Serverless SCF Component 、云函数 SCF 及 API 网关组件，快速构建一个REST API ，并实现 GET/PUT 操作。
+当一个应用需要对第三方提供服务接口时，REST API 无疑是目前最主流的选择。不过，如果自建 REST API，开发者需要购买虚拟机、配置环境等等，等一切都搞定，可能已经又是一个深夜。
+
+而这些，都可以用 Serverless  Framework 来解决。本教程将分享如何通过 Serverless SCF Component 、云函数 SCF 及 API 网关组件，快速构建一个 REST API ，并实现 GET/PUT 操作。
 
 ![](https://main.qcloudimg.com/raw/918551c66d6fa9c01f3667706d44f1b7.png)
 
-# 快速构建REST API
+# 快速构建 REST API
 
 ## 快速开始
 
@@ -122,8 +135,8 @@ $ serverless --debug
 
 ### 4. 测试
 
-通过如下命令测试REST API的返回情况：
-> 注：如windows系统中未安装`curl`，也可以直接通过浏览器打开对应链接查看返回情况
+通过如下命令测试 REST API 的返回情况：
+> 注：如 Windows 系统中未安装`curl`，也可以直接通过浏览器打开对应链接查看返回情况
 
 ```console
 $ curl -XGET http://service-9t28e0tg-1250000000.sg.apigw.tencentcs.com/release/users/teacher/go
@@ -139,7 +152,7 @@ $ curl -PUT http://service-9t28e0tg-1250000000.sg.apigw.tencentcs.com/release/us
 
 ### 5. 移除
 
-可以通过以下命令移除 REST API应用
+可以通过以下命令移除 REST API 应用
 ```console
 $ sls remove --debug
 
@@ -155,7 +168,7 @@ $ sls remove --debug
 
 ### 账号配置（可选）
 
-当前默认支持CLI扫描二维码登录，如您希望配置持久的环境变量/秘钥信息，也可以本地创建 `.env` 文件
+当前默认支持 CLI 扫描二维码登录，如您希望配置持久的环境变量/秘钥信息，也可以本地创建 `.env` 文件
 
 ```console
 $ touch .env # 腾讯云的配置信息
@@ -172,5 +185,7 @@ $ touch .env # 腾讯云的配置信息
 TENCENT_SECRET_ID=123
 TENCENT_SECRET_KEY=123
 ```
+
+[完整仓库模板](https://github.com/serverless/components/blob/master/templates/tencent-python-rest-api/README_CN.md)
 
 目前 REST API 模板主要展示了 GET/PUT 操作，后续即将支持对 Serverless DB 的连接，可以完整实现 CRUD 操作，并支持资源的弹性扩缩容。您可以通过该模板快速开发业务 REST API，参考文章示例，扩展代码，探索更丰富的场景。
