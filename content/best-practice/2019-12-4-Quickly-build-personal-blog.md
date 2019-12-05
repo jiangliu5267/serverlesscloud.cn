@@ -1,14 +1,14 @@
 ---
 title: Hexo + Serverless Framework，简单三步搭建你的个人博客
 description: 简单三步，即可通过 Serverless Website 组件快速构建一个 Serverless Hexo 站点。
-date: 2019-12-05
+date: 2019-12-04
 thumbnail: https://main.qcloudimg.com/raw/725de011824cbb11764b7f7a5f63034c.png
 categories:
   - best-practice
 authors:
   - liujiang
 authorslink:
-  - https://github.com/tinafangkunding
+  - https://github.com/jiangliu5267
 ---
 
 很多人都想拥有自己的个人博客，还得看起来漂亮、酷酷的。尤其对开发者来说，不仅可以分享技术（装）心得（逼），面试的时候还能成为加分。这里介绍两款好用的神器，不用忙前（前端）忙后（后端），简单 3min 即可搞定，本文免费分享给大家。
@@ -78,13 +78,13 @@ $ npm install
 可以通过 `hexo g` 命令生成静态页面
 
 ```
-hexo g   # generate
+$ hexo g   # generate
 ```
 
 > 注：如果希望在本地查看效果，也可以运行下列命令，通过浏览器访问 `localhost:4000` 查看页面效果。
 
 ```
-hexo s   # server
+$ hexo s   # server
 ```
 
 ## 配置
