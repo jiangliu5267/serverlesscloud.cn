@@ -58,7 +58,7 @@ module.exports = app
 > 在开始所有步骤前，需执行 `npm install -g serverless` 命令，全局安装 `serverless cli`。
 
 <video id="video" controls="" preload="none" poster="https://main.qcloudimg.com/raw/7fb9d2d24290fb89315e4ed63d42c728.png">
-      <source id="https://video-1251001047.cos.ap-chengdu.myqcloud.com/combile.mp4" type="video/mp4">
+      <source id="mp4" src="https://video-1251001047.cos.ap-chengdu.myqcloud.com/combile.mp4">
       </video>
 
 ## 准备
