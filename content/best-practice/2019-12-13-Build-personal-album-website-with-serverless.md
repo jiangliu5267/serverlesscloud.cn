@@ -11,7 +11,7 @@ authorslink:
   - https://github.com/jiangliu5267
 ---
 
-# 用 Serverless 快速搭建个人相册网站
+# 用 Serverless 快速搭建个人相册网站1
 
 我们可以利用一些开源工具将照片、视频等文件放到云服务上，来降低存储成本。本文将介绍一种方法：利用 ThumbsUp 工具，结合 Serverless Framework 的component 快速搭建一个个人相册网站，为你的存储空间减压。
 
